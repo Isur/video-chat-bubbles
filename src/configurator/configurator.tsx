@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
 import { RefreshCw, SkipForward, SkipBack } from "lucide-react";
+import { ConfigContext } from "./configContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ConfigContext } from "./configContext";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/modeToggle";
 

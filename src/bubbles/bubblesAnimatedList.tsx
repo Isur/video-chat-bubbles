@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Bubble } from "./reducer";
 import { BubbleView } from "./bubble";
-import { motion, AnimatePresence } from "framer-motion";
 import { ConfigContext } from "@/configurator";
 
 interface BubblesAnimatedListProps {
