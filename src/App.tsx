@@ -1,11 +1,15 @@
-import { BubblesContainer } from './bubbles';
+import { Panels } from "./Panels";
+import { ThemeProvider } from "./components/themeProvider";
+import { ConfigProvider } from "./configurator";
 
 function App() {
   return (
-    <div className="h-screen w-screen">
-      <BubblesContainer />
-    </div>
-  )
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ConfigProvider>
+        <Panels />
+      </ConfigProvider>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;

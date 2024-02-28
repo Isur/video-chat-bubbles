@@ -15,4 +15,3 @@ Open app and start typing.
 Enter to create new bubble.
 
 Bubbles will dissapear after few seconds.
-
