@@ -1,0 +1,51 @@
+export type Bubble = {
+    id: string;
+    text: string;
+}
+
+export type BubbleTypes = "ADD_BUBBLE" | "REMOVE_BUBBLE" | "UPDATE_BUBBLE" | "BACKSPACE";
+
+export type Action = ActionAddBubble | ActionRemoveBubble | ActionTypeInBubble | ActionBackspace;
+
+type ActionAddBubble = {
+    type: "ADD_BUBBLE";
+}
+
+type ActionRemoveBubble = {
+    type: "REMOVE_BUBBLE";
+}
+
+type ActionTypeInBubble = {
+    type: "UPDATE_BUBBLE";
+    payload: string;
+}
+
+type ActionBackspace = {
+    type: "BACKSPACE";
+}
+
+export function bubblesReducer(state: Bubble[], action: Action) {
+    switch (action.type) {
+        case "ADD_BUBBLE":
+            return [...state, {
+                id: new Date().getTime().toString(),
+                text: ""
+            }];
+        case "REMOVE_BUBBLE": {
+            const [, ...newState] = [...state];
+            return newState;
+        }
+        case "UPDATE_BUBBLE": {
+            const newState = [...state];
+            newState[newState.length - 1].text += action.payload!;
+            return newState;
+        }
+        case "BACKSPACE": {
+            const newState = [...state];
+            newState[newState.length - 1].text = newState[newState.length - 1].text.slice(0, -1);
+            return newState;
+        }
+        default:
+            return state;
+    }
+}
