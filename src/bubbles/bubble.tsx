@@ -16,7 +16,7 @@ export const BubbleView: FC<BubbleViewProps> = ({ bubble }) => {
         padding: config.config.padding,
         textAlign: config.config.right ? "right" : "left",
       }}
-      className="min-w-0 max-w-full bg-white rounded-md text-black whitespace-pre text-pretty"
+      className="min-w-0 max-w-full bg-white rounded-md text-black whitespace-pre-wrap"
     >
       {bubble.text}
     </div>
