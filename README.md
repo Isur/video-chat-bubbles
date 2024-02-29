@@ -35,3 +35,7 @@ You can change:
 - Position of the configurator menu;
 - Dark/light mode;
 - Panels are resizable and by dragging you can change size of them;
+
+## How it looks
+
+![Video Chat Bubble](./app.mov)
