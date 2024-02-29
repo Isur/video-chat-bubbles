@@ -38,4 +38,4 @@ You can change:
 
 ## How it looks
 
-![Video Chat Bubble](./app.mov)
+![Video Chat Bubble](./app.gif)
