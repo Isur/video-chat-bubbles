@@ -7,11 +7,31 @@ Simple project to create a video chat bubble using Vite with React, TypeScript, 
 1. Clone the repository
 2. Run `pnpm install` to install.
 3. Run `pnpm dev` to start the development server.
+or
+4. Run `pnpm build` to build the project.
+5. Run `pnpm preview` to preview the build.
 
 ## How to use
 
-Open app and start typing.
+Open app and configure it to your needs.
 
-Enter to create new bubble.
+Click START button to start the "chat".
 
-Bubbles will dissapear after few seconds.
+Start typing and you will see the bubble with your message.
+
+Click enter and start typing to create new bubble with next message.
+
+Bubbles will dissapear after few seconds - as you set it up in configurator.
+
+## Configurator
+
+App have build in configurator to change some settings.
+
+You can change:
+- Font size;
+- Padding inside the bubble;
+- Time for bubble to dissapear;
+- Alignement of the bubble to right or left;
+- Position of the configurator menu;
+- Dark/light mode;
+- Panels are resizable and by dragging you can change size of them;
