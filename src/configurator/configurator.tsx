@@ -20,10 +20,25 @@ export const Configurator: FC<ConfiguratorProps> = () => {
       </h1>
       <div className="flex flex-row items-center gap-5">
         <ModeToggle />
-        <Button variant="outline" size="icon" onClick={config.toggleRotation}>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() =>
+            config.updateSettings({
+              rotation:
+                config.config.rotation == "horizontal"
+                  ? "vertical"
+                  : "horizontal",
+            })
+          }
+        >
           <RefreshCw className="h-4 w-4" />
         </Button>
-        <Button variant="outline" size="icon" onClick={config.toggleRight}>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => config.updateSettings({ right: !config.config.right })}
+        >
           {config.config.right ? (
             <SkipForward className="h-4 w-4" />
           ) : (
@@ -39,7 +54,7 @@ export const Configurator: FC<ConfiguratorProps> = () => {
           placeholder="Font Size"
           value={config.config.fontSize}
           onChange={(e) =>
-            config.handleFontSizeChange(parseInt(e.target.value))
+            config.updateSettings({ fontSize: parseInt(e.target.value) })
           }
         />
       </div>
@@ -51,7 +66,23 @@ export const Configurator: FC<ConfiguratorProps> = () => {
           id="padding"
           placeholder="Padding"
           value={config.config.padding}
-          onChange={(e) => config.handlePaddingChange(parseInt(e.target.value))}
+          onChange={(e) =>
+            config.updateSettings({ padding: parseInt(e.target.value) })
+          }
+        />
+      </div>
+
+      <div className="grid w-full max-w-sm items-center gap-1.5">
+        <Label htmlFor="time">Time [ms]</Label>
+        <Input
+          type="number"
+          id="time"
+          step="500"
+          placeholder="Time in MS"
+          value={config.config.time}
+          onChange={(e) =>
+            config.updateSettings({ time: parseInt(e.target.value) })
+          }
         />
       </div>
 
@@ -61,7 +92,7 @@ export const Configurator: FC<ConfiguratorProps> = () => {
 
       <Button
         variant="default"
-        onClick={() => config.handleOnOffChange(!config.config.on)}
+        onClick={() => config.updateSettings({ on: !config.config.on })}
       >
         {onoffLabel}
       </Button>

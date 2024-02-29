@@ -52,6 +52,8 @@ export function bubblesReducer(state: Bubble[], action: Action) {
       return newState;
     }
     case "BACKSPACE": {
+      if (state.length === 0) return state;
+      if (state[state.length - 1].text === "") return state;
       const newState = [...state];
       newState[newState.length - 1].text = newState[
         newState.length - 1

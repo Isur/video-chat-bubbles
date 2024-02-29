@@ -55,9 +55,9 @@ export const BubblesContainer: FC = () => {
       () => {
         dispatch({ type: "REMOVE_BUBBLE" });
       },
-      10000 + state.length * 1500
+      config.time + state.length * 1500
     );
-  }, [state.length]);
+  }, [state.length, config]);
 
   const eventHandler = useCallback(
     (e: KeyboardEvent) => {

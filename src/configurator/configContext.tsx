@@ -5,16 +5,13 @@ export interface Config {
   padding: number;
   on: boolean;
   right: boolean;
+  time: number;
   rotation: "horizontal" | "vertical";
 }
 
 export interface ConfigContextInterface {
   config: Config;
-  handleFontSizeChange: (size: number) => void;
-  handleOnOffChange: (on: boolean) => void;
-  handlePaddingChange: (padding: number) => void;
-  toggleRotation: () => void;
-  toggleRight: () => void;
+  updateSettings: (settings: Partial<Config>) => void;
   reset: () => void;
 }
 
@@ -23,50 +20,25 @@ const defaultConfig: Config = {
   padding: 12,
   on: false,
   right: false,
+  time: 10000,
   rotation: "horizontal",
 };
 
 export const ConfigContext = createContext<ConfigContextInterface>({
   config: defaultConfig,
-  handleFontSizeChange: () => {},
-  handleOnOffChange: () => {},
-  handlePaddingChange: () => {},
-  toggleRotation: () => {},
   reset: () => {},
-  toggleRight: () => {},
+  updateSettings: () => {},
 });
 
 export const ConfigProvider: FC<PropsWithChildren> = ({ children }) => {
   const [config, setConfig] = useState<Config>(defaultConfig);
 
-  const handleFontSizeChange = (size: number) => {
-    setConfig((prev) => ({ ...prev, fontSize: size }));
-  };
-
-  const handleOnOffChange = (on: boolean) => {
-    setConfig((prev) => ({ ...prev, on }));
-  };
-
-  const handlePaddingChange = (padding: number) => {
-    setConfig((prev) => ({ ...prev, padding }));
-  };
-
   const reset = () => {
     setConfig(defaultConfig);
   };
 
-  const toggleRotation = () => {
-    setConfig((prev) => ({
-      ...prev,
-      rotation: prev.rotation === "horizontal" ? "vertical" : "horizontal",
-    }));
-  };
-
-  const toggleRight = () => {
-    setConfig((prev) => ({
-      ...prev,
-      right: !prev.right,
-    }));
+  const updateSettings = (settings: Partial<Config>) => {
+    setConfig((prev) => ({ ...prev, ...settings }));
   };
 
   return (
@@ -74,11 +46,7 @@ export const ConfigProvider: FC<PropsWithChildren> = ({ children }) => {
       value={{
         config,
         reset,
-        handleOnOffChange,
-        handleFontSizeChange,
-        handlePaddingChange,
-        toggleRotation,
-        toggleRight,
+        updateSettings,
       }}
     >
       {children}
