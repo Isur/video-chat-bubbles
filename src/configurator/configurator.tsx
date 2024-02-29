@@ -14,8 +14,10 @@ export const Configurator: FC<ConfiguratorProps> = () => {
   const onoffLabel = config.config.on ? "STOP" : "START";
 
   return (
-    <div className="flex flex-col gap-5 bg-background h-full w-full p-4">
-      <h1>Configurator</h1>
+    <div className="flex flex-col flex-wrap gap-5 bg-background h-full w-full max-w-[300px] p-4">
+      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Configurator
+      </h1>
       <div className="flex flex-row items-center gap-5">
         <ModeToggle />
         <Button variant="outline" size="icon" onClick={config.toggleRotation}>
