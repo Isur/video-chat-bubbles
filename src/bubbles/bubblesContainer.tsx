@@ -13,8 +13,7 @@ export const BubblesContainer: FC = () => {
       if (!config.on) {
         dispatch({
           type: "ADD_BUBBLE",
-          payload:
-            "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+          payload: "Example bubble with text.",
         });
       }
     }, 1000);
@@ -32,21 +31,11 @@ export const BubblesContainer: FC = () => {
         dispatch({ type: "ADD_BUBBLE", payload: "TEST BUBBLE" });
       }
     }, 2000);
-    const timer4 = setTimeout(() => {
-      if (!config.on) {
-        dispatch({
-          type: "ADD_BUBBLE",
-          payload:
-            "adsfsdalfkjasdlkfjsdalk;fjsadlkfsdalkfjkdsjaflksjdflkasjflks;adjfklsdajflaksjflksadfjlksadfjdklsa",
-        });
-      }
-    }, 2500);
 
     return () => {
       clearTimeout(timer);
       clearTimeout(timer2);
       clearTimeout(timer3);
-      clearTimeout(timer4);
     };
   }, [config.on]);
 
