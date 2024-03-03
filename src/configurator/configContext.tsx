@@ -5,6 +5,7 @@ export interface Config {
   padding: number;
   on: boolean;
   right: boolean;
+  top: boolean;
   time: number;
   rotation: "horizontal" | "vertical";
 }
@@ -20,6 +21,7 @@ const defaultConfig: Config = {
   padding: 12,
   on: false,
   right: false,
+  top: false,
   time: 10000,
   rotation: "horizontal",
 };

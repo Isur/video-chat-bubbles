@@ -1,5 +1,11 @@
 import { FC, useContext } from "react";
-import { RefreshCw, SkipForward, SkipBack } from "lucide-react";
+import {
+  RefreshCw,
+  SkipForward,
+  SkipBack,
+  ArrowBigUp,
+  ArrowBigDown,
+} from "lucide-react";
 import { ConfigContext } from "./configContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,6 +49,18 @@ export const Configurator: FC<ConfiguratorProps> = () => {
             <SkipForward className="h-4 w-4" />
           ) : (
             <SkipBack className="h-4 w-4" />
+          )}
+        </Button>
+
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => config.updateSettings({ top: !config.config.top })}
+        >
+          {config.config.top ? (
+            <ArrowBigUp className="h-4 w-4" />
+          ) : (
+            <ArrowBigDown className="h-4 w-4" />
           )}
         </Button>
       </div>
