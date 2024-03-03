@@ -6,6 +6,7 @@ import {
   ResizablePanelGroup,
 } from "./components/ui/resizable";
 import { ConfigContext, Configurator } from "./configurator";
+import { Notes } from "./notes";
 
 export const Panels = () => {
   const { config } = useContext(ConfigContext);
@@ -23,7 +24,7 @@ export const Panels = () => {
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel>
-              <div className="w-full h-full bg-screen" />
+              <Notes />
             </ResizablePanel>
           </ResizablePanelGroup>
         </ResizablePanel>
