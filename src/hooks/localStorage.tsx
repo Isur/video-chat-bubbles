@@ -7,10 +7,14 @@ function getLocalStorage<T extends LocalStorageValue>(
   initValue: T
 ): T {
   const value = localStorage.getItem(key);
-  if (value) {
-    return JSON.parse(value);
+  if (!value) {
+    return initValue;
   }
-  return initValue;
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return initValue;
+  }
 }
 
 function setLocalStorage<T extends LocalStorageValue>(key: string, value: T) {
