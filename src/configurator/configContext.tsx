@@ -1,10 +1,5 @@
-import {
-  FC,
-  PropsWithChildren,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
+import { FC, PropsWithChildren, createContext } from "react";
+import { useLocalStorage } from "@/hooks";
 
 export interface Config {
   fontSize: number;
@@ -39,25 +34,14 @@ export const ConfigContext = createContext<ConfigContextInterface>({
 });
 
 export const ConfigProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [config, setConfig] = useState<Config>(defaultConfig);
-
-  useEffect(() => {
-    const conf = localStorage.getItem("config");
-    if (conf) {
-      setConfig(JSON.parse(conf));
-    }
-  }, []);
+  const [config, setConfig] = useLocalStorage<Config>("config", defaultConfig);
 
   const reset = () => {
     setConfig(defaultConfig);
   };
 
   const updateSettings = (settings: Partial<Config>) => {
-    setConfig((prev) => {
-      const newConfig = { ...prev, ...settings };
-      localStorage.setItem("config", JSON.stringify(newConfig));
-      return newConfig;
-    });
+    setConfig((prev) => ({ ...prev, ...settings }));
   };
 
   return (

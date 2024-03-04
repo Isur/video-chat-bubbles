@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
+import { useLocalStorage } from "@/hooks";
 
 export const Notes = () => {
-  const [note, setNote] = useState("");
-
-  useEffect(() => {
-    const noteStorage = localStorage.getItem("notes");
-    if (noteStorage) setNote(noteStorage);
-  }, []);
-
-  const updateStorage = (e: string) => {
-    setNote(e);
-    localStorage.setItem("notes", e);
-  };
+  const [note, setNote] = useLocalStorage<string>("notes", "");
 
   return (
     <div className="w-full h-full bg-background p-4 text-black">
       <textarea
         value={note}
-        onChange={(e) => updateStorage(e.target.value)}
+        onChange={(e) => setNote(e.target.value)}
         className="h-full w-full text-black p-4 text-primary bg-background"
       />
     </div>
