@@ -1,9 +1,9 @@
+name: Test and Deploy
+
 on:
-  workflow_run:
-    workflows: [CI]
-    branches: [master]
-    types:
-      - completed
+  push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -29,6 +29,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
 
       - name: Build
         run: pnpm build
