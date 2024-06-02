@@ -39,6 +39,7 @@ jobs:
 
   Deploy-Production:
     needs: tests
+    name: Vercel Production Deployment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
