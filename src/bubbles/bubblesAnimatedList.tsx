@@ -19,7 +19,7 @@ export const BubblesAnimatedList: FC<BubblesAnimatedListProps> = ({
         alignItems: config.right ? "end" : "start",
         justifyContent: config.top ? "start" : "end",
       }}
-      className="max-w-full bg-screen h-full flex flex-col items-start gap-5 p-4"
+      className="max-w-full bg-blue-500 h-full flex flex-col items-start gap-5 p-4"
     >
       <AnimatePresence>
         {bubblesArray
