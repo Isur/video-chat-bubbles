@@ -23,7 +23,7 @@ const defaultConfig: Config = {
   on: false,
   right: false,
   top: false,
-  time: 10000,
+  time: 7000,
   rotation: "horizontal",
 };
 

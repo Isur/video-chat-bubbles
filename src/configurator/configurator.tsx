@@ -5,12 +5,21 @@ import {
   SkipBack,
   ArrowBigUp,
   ArrowBigDown,
+  HelpCircleIcon,
 } from "lucide-react";
 import { ConfigContext } from "./configContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/modeToggle";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface ConfiguratorProps {}
 
@@ -62,6 +71,42 @@ export const Configurator: FC<ConfiguratorProps> = () => {
           ) : (
             <ArrowBigDown className="h-4 w-4" />
           )}
+        </Button>
+        <Button variant="outline" size="icon">
+          <Dialog>
+            <DialogTrigger>
+              <Button variant="outline" size="icon">
+                <HelpCircleIcon className="h-4 w-4" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Info</DialogTitle>
+                <DialogDescription>
+                  <p>
+                    This is a simple app to display bubble messages like in
+                    communication apps. You can configure the settings to your
+                    liking. You have also notepad to write down some notes
+                    before you start typing. Might be useful for recording
+                    videos.
+                  </p>
+                  <br />
+                  <p>All settings are saved in local storage.</p>
+                  <br />
+                  <p>
+                    Author:{" "}
+                    <a
+                      href="https://isur.dev"
+                      target="_blank"
+                      className="underline"
+                    >
+                      Artur Bednarczyk - Isur
+                    </a>
+                  </p>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </Button>
       </div>
       <div className="grid w-full max-w-sm items-center gap-1.5">
